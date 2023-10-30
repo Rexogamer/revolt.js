@@ -24,7 +24,7 @@ export class User {
     _id: string;
     username: string;
     discriminator: string;
-    display_name: Nullable<string>;
+    display_name?: Nullable<string>;
 
     avatar: Nullable<File>;
     badges: Nullable<number>;
