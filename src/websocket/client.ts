@@ -238,7 +238,7 @@ export class WebSocketClient {
                                                 break;
                                         }
                                     }
-                                } else {
+                                } else if (!packet.webhook) {
                                     await this.client.users.fetch(
                                         packet.author,
                                     );
@@ -254,9 +254,11 @@ export class WebSocketClient {
                                         await this.client.servers.fetch(
                                             channel.server_id!,
                                         );
+
                                     if (
                                         packet.author !==
-                                        "00000000000000000000000000"
+                                            "00000000000000000000000000" &&
+                                        !packet.webhook
                                     )
                                         await server.fetchMember(packet.author);
                                 }

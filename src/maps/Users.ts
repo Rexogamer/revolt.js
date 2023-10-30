@@ -23,6 +23,8 @@ export class User {
 
     _id: string;
     username: string;
+    discriminator: string;
+    display_name: Nullable<string>;
 
     avatar: Nullable<File>;
     badges: Nullable<number>;
@@ -45,6 +47,8 @@ export class User {
 
         this._id = data._id;
         this.username = data.username;
+        this.discriminator = data.discriminator;
+        this.display_name = data.display_name;
 
         this.avatar = toNullable(data.avatar);
         this.badges = toNullable(data.badges);
@@ -89,10 +93,16 @@ export class User {
                         this.status.text = undefined;
                     }
                 }
+                // @ts-ignore
+                case "DisplayName":
+                    this.display_name = null;
+                    break;
             }
         }
 
         apply("username");
+        apply("discriminator");
+        apply("display_name");
         apply("avatar");
         apply("badges");
         apply("status");
@@ -131,7 +141,7 @@ export class User {
      */
     async addFriend() {
         return await this.client.api.post(`/users/friend`, {
-            username: this.username,
+            username: this.username + "#" + this.discriminator,
         });
     }
 
@@ -245,6 +255,8 @@ export default class Users extends Collection<string, User> {
             new User(client, {
                 _id: "00000000000000000000000000",
                 username: "Revolt",
+                discriminator: "0000",
+                display_name: "Revolt", // typing issue
             }),
         );
     }
