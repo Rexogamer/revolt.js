@@ -46,6 +46,7 @@ export class Server {
 
     nsfw: Nullable<boolean> = null;
     flags: Nullable<number> = null;
+    discoverable: Nullable<boolean> = null;
 
     get channels() {
         return this.channel_ids
@@ -205,6 +206,7 @@ export class Server {
 
         this.nsfw = toNullable(data.nsfw);
         this.flags = toNullable(data.flags);
+        this.discoverable = toNullable(data.discoverable);
 
         makeAutoObservable(this, {
             _id: false,
@@ -252,6 +254,7 @@ export class Server {
         apply("banner");
         apply("nsfw");
         apply("flags");
+        apply("discoverable");
     }
 
     /**
