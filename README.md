@@ -1,8 +1,8 @@
-# revolt.js
+# @rexogamer/revolt.js
 
-![revolt.js](https://img.shields.io/npm/v/revolt.js) ![revolt-api](https://img.shields.io/npm/v/revolt-api?label=Revolt%20API)
+![@rexogamer/revolt.js](https://img.shields.io/npm/v/@rexogamer/revolt.js) ![revolt-api](https://img.shields.io/npm/v/revolt-api?label=Revolt%20API)
 
-**revolt.js** is a direct implementation of the entire Revolt API and provides a way to authenticate and start communicating with Revolt servers.
+**revolt.js** is a direct implementation of the entire Revolt API and provides a way to authenticate and start communicating with Revolt servers. This repository is a fork of revolt.js v6 with various API updates.
 
 ## Example Usage (Javascript / ES6)
 

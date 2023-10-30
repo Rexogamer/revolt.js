@@ -1,10 +1,10 @@
 {
-    "name": "revolt.js",
-    "version": "6.0.20-patch.1",
+    "name": "@rexogamer/revolt.js",
+    "version": "6.1.0",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "module": "esm/index.js",
-    "repository": "https://github.com/revoltchat/revolt.js",
+    "repository": "https://github.com/rexogamer/revolt.js",
     "author": "Paul Makles <insrt.uk>",
     "license": "MIT",
     "dependencies": {
@@ -89,6 +89,6 @@
         "dist",
         "esm"
     ],
-    "description": "Library for interacting with the Revolt API.",
+    "description": "Library for interacting with the Revolt API. Fork of v6.",
     "packageManager": "yarn@3.2.3"
 }
