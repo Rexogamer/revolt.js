@@ -1,5 +1,5 @@
 {
-    "name": "revolt.js",
+    "name": "@rexovolt/revolt.js",
     "version": "6.1.0",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
