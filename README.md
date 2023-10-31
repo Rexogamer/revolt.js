@@ -24,9 +24,11 @@ client.on("message", async (message) => {
 client.loginBot("..");
 ```
 
-If you are using Node, you must specify `--experimental-specifier-resolution=node`.
+### Important note
 
-For example, `node --experimental-specifier-resolution=node index.js`.
+If you're using Node 18 or earlier, you must specify `--experimental-specifier-resolution=node` when running your code (for example, `node --experimental-specifier-resolution=node index.js`).
+
+If you're using Node 19 or later, you'll need to use a custom loader. Install `commonjs-extension-resolution-loader` using your preferred package manager (e.g. `yarn add commonjs-extension-resolution-loader`), then specify `--loader=commonjs-extension-resolution-loader` when running your code (for example, `node --loader=commonjs-extension-resolution-loader index.js`).
 
 ## Example Usage (CommonJS)
 
