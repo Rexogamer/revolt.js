@@ -10,13 +10,12 @@ import type { File } from "revolt-api";
 
 import { makeAutoObservable, action, runInAction, computed } from "mobx";
 import isEqual from "lodash.isequal";
+import { decodeTime } from "ulid";
 
 import { U32_MAX, UserPermission } from "../permissions/definitions";
 import { toNullable, Nullable } from "../util/null";
 import Collection from "./Collection";
 import { Client, FileArgs } from "..";
-import _ from "lodash";
-import { decodeTime } from "ulid";
 
 export class User {
     client: Client;
