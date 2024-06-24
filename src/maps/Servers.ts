@@ -450,6 +450,13 @@ export class Server {
     }
 
     /**
+     * Subscribe to the server's member events
+     */
+    subscribe() {
+        this.client.websocket.send({ type: "Subscribe", server_id: this._id });
+    }
+
+    /**
      * Generate URL to icon for this server
      * @param args File parameters
      * @returns File URL
