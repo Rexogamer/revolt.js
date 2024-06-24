@@ -256,6 +256,8 @@ export default class Users extends Collection<string, User> {
                 username: "Revolt",
                 discriminator: "0000",
                 display_name: "Revolt", // typing issue
+                relationship: "None", // ditto
+                online: true, // ditto
             }),
         );
     }

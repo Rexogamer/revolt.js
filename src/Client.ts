@@ -169,22 +169,16 @@ export class Client extends EventEmitter {
         this.bots = new Bots(this);
         this.emojis = new Emojis(this);
 
-        makeObservable(
-            this,
-            {
-                user: observable,
-                users: observable,
-                channels: observable,
-                servers: observable,
-                members: observable,
-                messages: observable,
-                emojis: observable,
-                reset: action,
-            },
-            {
-                proxy: false,
-            },
-        );
+        makeObservable(this, {
+            user: observable,
+            users: observable,
+            channels: observable,
+            servers: observable,
+            members: observable,
+            messages: observable,
+            emojis: observable,
+            reset: action,
+        });
 
         this.options = defaultsDeep(options, defaultConfig);
         if (this.options.cache) throw "Cache is not supported yet.";

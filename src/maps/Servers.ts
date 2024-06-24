@@ -2,11 +2,12 @@ import type {
     Category,
     Channel as ChannelI,
     DataBanCreate,
-    DataCreateChannel,
     DataCreateServer,
+    DataCreateServerChannel,
     DataEditRole,
     DataEditServer,
     FieldsServer,
+    Member,
     Role,
     Server as ServerI,
     SystemMessageChannels,
@@ -262,7 +263,7 @@ export class Server {
      * @param data Channel create route data
      * @returns The newly-created channel
      */
-    async createChannel(data: DataCreateChannel) {
+    async createChannel(data: DataCreateServerChannel) {
         return await this.client.api.post(
             `/servers/${this._id as ""}/channels`,
             data,
@@ -382,6 +383,7 @@ export class Server {
     /**
      * Fetch a server member
      * @param user User or User ID
+     * @param withRoles Whether to also fetch associated role objects
      * @returns Server member object
      */
     async fetchMember(user: User | string) {
@@ -392,9 +394,10 @@ export class Server {
         });
         if (existing) return existing;
 
-        const member = await this.client.api.get(
+        const member = (await this.client.api.get(
             `/servers/${this._id as ""}/members/${user_id as ""}`,
-        );
+            { roles: false }, // TODO: make this toggleable?
+        )) as Member; // not sure how to get typescript to realise that whether this is a member object or an object containing one is tied to the param (upstream typing issue???)
 
         return this.client.members.createObj(member);
     }

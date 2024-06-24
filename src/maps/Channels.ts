@@ -2,10 +2,10 @@ import type {
     Channel as ChannelI,
     DataCreateGroup,
     DataEditChannel,
+    DataMessageSearch,
     DataMessageSend,
     FieldsChannel,
     Message as MessageI,
-    OptionsMessageSearch,
 } from "revolt-api";
 import type { File } from "revolt-api";
 import type { Member } from "revolt-api";
@@ -528,7 +528,7 @@ export class Channel {
      * @param params Message searching route data
      * @returns The messages
      */
-    async search(params: Omit<OptionsMessageSearch, "include_users">) {
+    async search(params: Omit<DataMessageSearch, "include_users">) {
         const messages = (await this.client.api.post(
             `/channels/${this._id as ""}/search`,
             params,
@@ -541,7 +541,7 @@ export class Channel {
      * @param params Message searching route data
      * @returns The messages
      */
-    async searchWithUsers(params: Omit<OptionsMessageSearch, "include_users">) {
+    async searchWithUsers(params: Omit<DataMessageSearch, "include_users">) {
         const data = (await this.client.api.post(
             `/channels/${this._id as ""}/search`,
             { ...params, include_users: true },

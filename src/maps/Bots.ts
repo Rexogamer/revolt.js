@@ -109,6 +109,8 @@ export default class Bots {
             bot: {
                 owner: this.client.user!._id,
             },
+            relationship: "None",
+            online: false,
         });
 
         return {
