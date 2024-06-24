@@ -1,10 +1,13 @@
 {
     "name": "@rexovolt/revolt.js",
-    "version": "6.2.0",
+    "version": "6.3.0",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "module": "esm/index.js",
-    "repository": "https://github.com/rexogamer/revolt.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rexogamer/revolt.js.git"
+    },
     "author": "Paul Makles <insrt.uk>",
     "license": "MIT",
     "dependencies": {
