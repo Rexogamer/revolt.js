@@ -88,5 +88,5 @@
         "esm"
     ],
     "description": "Library for interacting with the Revolt API. Fork of v6.",
-    "packageManager": "yarn@3.2.3"
+    "packageManager": "yarn@4.5.3"
 }
