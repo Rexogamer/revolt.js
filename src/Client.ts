@@ -5,6 +5,7 @@ import type {
     DataCreateAccount,
     DataLogin,
     DataOnboard,
+    Feature,
     InviteResponse,
 } from "revolt-api";
 import type { RevoltConfig, Metadata } from "revolt-api";
@@ -137,6 +138,15 @@ export type FileArgs = [
 
 export type Session = { token: string };
 
+export type RevoltOrUpryzingConfig = RevoltConfig & {
+    features: {
+        /** @description Upryzing file server service configuration */
+        dove: Feature;
+        /** @description Upryzing proxy service configuration */
+        pigeon: Feature;
+    };
+};
+
 export class Client extends EventEmitter {
     heartbeat: number;
 
@@ -146,7 +156,7 @@ export class Client extends EventEmitter {
 
     options: ClientOptions;
     websocket: WebSocketClient;
-    configuration?: RevoltConfig;
+    configuration?: RevoltOrUpryzingConfig;
 
     users: Users;
     channels: Channels;
@@ -231,7 +241,9 @@ export class Client extends EventEmitter {
      * configuration if it has already been fetched before.
      */
     async connect() {
-        this.configuration = await this.api.get("/");
+        this.configuration = (await this.api.get(
+            "/",
+        )) as RevoltOrUpryzingConfig;
     }
 
     /**
@@ -475,14 +487,19 @@ export class Client extends EventEmitter {
     }
 
     /**
-     * Proxy a file through January.
+     * Proxy a file through Dove/January.
      * @param url URL to proxy
      * @returns Proxied media URL
      */
     proxyFile(url: string): string | undefined {
-        if (this.configuration?.features.january.enabled) {
+        if (
+            this.configuration?.features.dove.enabled ||
+            this.configuration?.features.january.enabled
+        ) {
             return `${
-                this.configuration.features.january.url
+                this.configuration.features.dove.enabled
+                    ? this.configuration.features.dove.url
+                    : this.configuration.features.january.url
             }/proxy?url=${encodeURIComponent(url)}`;
         }
     }
@@ -506,8 +523,10 @@ export class Client extends EventEmitter {
     ) {
         const [options, allowAnimation, fallback] = args;
 
-        const autumn = this.configuration?.features.autumn;
-        if (!autumn?.enabled) return fallback;
+        const fileServer =
+            this.configuration?.features.pigeon ??
+            this.configuration?.features.autumn;
+        if (!fileServer?.enabled) return fallback;
         if (!attachment) return fallback;
 
         const { tag, _id, content_type, metadata } = attachment;
@@ -533,6 +552,6 @@ export class Client extends EventEmitter {
             }
         }
 
-        return `${autumn.url}/${tag}/${_id}${query}`;
+        return `${fileServer.url}/${tag}/${_id}${query}`;
     }
 }

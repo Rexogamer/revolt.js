@@ -57,9 +57,12 @@ export class Emoji {
      * Generate emoji URL
      */
     get imageURL() {
-        return `${this.client.configuration?.features.autumn.url}/emojis/${
-            this._id
-        }${this.animated ? "" : "?max_side=128"}`;
+        const url =
+            this.client.configuration?.features.pigeon.url ??
+            this.client.configuration?.features.autumn.url;
+        return `${url}/emojis/${this._id}${
+            this.animated ? "" : "?max_side=128"
+        }`;
     }
 }
 
