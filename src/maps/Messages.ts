@@ -43,6 +43,7 @@ export class Message {
     masquerade: Nullable<Masquerade>;
     reactions: ObservableMap<string, ObservableSet<string>>;
     interactions: Nullable<Interactions>;
+    pinned: Nullable<boolean>;
 
     get channel() {
         return this.client.channels.get(this.channel_id);
@@ -183,6 +184,7 @@ export class Message {
         this.reply_ids = toNullable(data.replies);
         this.masquerade = toNullable(data.masquerade);
         this.interactions = toNullable(data.interactions);
+        this.pinned = toNullable(data.pinned);
 
         this.reactions = new ObservableMap();
         for (const reaction of Object.keys(data.reactions ?? {})) {
@@ -240,12 +242,31 @@ export class Message {
             return newMap;
         });
         apply("interactions");
+        apply("pinned");
     }
 
     @action append({ embeds }: Pick<Partial<MessageI>, "embeds">) {
         if (embeds) {
             this.embeds = [...(this.embeds ?? []), ...embeds];
         }
+    }
+
+    /**
+     * Pin a message
+     */
+    async pin() {
+        return await this.client.api.post(
+            `/channels/${this.channel_id as ""}/messages/${this._id as ""}/pin`,
+        );
+    }
+
+    /**
+     * Unpin a message
+     */
+    async unpin() {
+        return await this.client.api.delete(
+            `/channels/${this.channel_id as ""}/messages/${this._id as ""}/pin`,
+        );
     }
 
     /**
