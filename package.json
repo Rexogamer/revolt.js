@@ -15,7 +15,6 @@
         "@insertish/isomorphic-ws": "^4.0.1",
         "eventemitter3": "^5.0.1",
         "lodash.defaultsdeep": "^4.6.1",
-        "lodash.flatten": "^4.4.0",
         "lodash.isequal": "^4.5.0",
         "long": "^5.2.3",
         "mobx": "^6.12.4",
@@ -24,10 +23,7 @@
         "ws": "^8.17.1"
     },
     "devDependencies": {
-        "@types/events": "^3.0.3",
-        "@types/lodash": "^4.17.5",
         "@types/lodash.defaultsdeep": "^4.6.9",
-        "@types/lodash.flatten": "^4.4.9",
         "@types/lodash.isequal": "^4.5.8",
         "@types/node": "^20.14.8",
         "@types/ws": "^8.5.10",
@@ -38,7 +34,6 @@
         "eslint-plugin-mobx": "^0.0.10",
         "in-publish": "^2.0.1",
         "jsdoc-babel": "^0.5.0",
-        "node-fetch": "^2.7.0",
         "prettier": "^2.8.8",
         "rimraf": "^5.0.7",
         "tsc-watch": "^6.2.0",
