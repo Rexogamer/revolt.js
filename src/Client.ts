@@ -493,11 +493,11 @@ export class Client extends EventEmitter {
      */
     proxyFile(url: string): string | undefined {
         if (
-            this.configuration?.features.dove.enabled ||
-            this.configuration?.features.january.enabled
+            this.configuration?.features.dove?.enabled ||
+            this.configuration?.features.january?.enabled
         ) {
             return `${
-                this.configuration.features.dove.enabled
+                this.configuration.features.dove?.enabled
                     ? this.configuration.features.dove.url
                     : this.configuration.features.january.url
             }/proxy?url=${encodeURIComponent(url)}`;
