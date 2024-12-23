@@ -1,24 +1,26 @@
 name: Typecheck
 
 on:
-  push:
-    branches: [ v6 ]
-  pull_request:
-    branches: [ v6 ]
+    push:
+        branches: [v6]
+    pull_request:
+        branches: [v6]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [18.x, 20.x]
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - run: yarn install
-    - run: yarn run typecheck
+        steps:
+            - uses: actions/checkout@v2
+            - name: Enable Corepack
+              run: corepack enable
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: "yarn"
+            - run: yarn install
+            - run: yarn run typecheck
