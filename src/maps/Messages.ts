@@ -164,6 +164,10 @@ export class Message {
                 return { type, by: get(system.by) };
             case "channel_ownership_changed":
                 return { type, from: get(system.from), to: get(system.to) };
+            case "message_pinned":
+                return { type, id: system.id, by: get(system.by) };
+            case "message_unpinned":
+                return { type, id: system.id, by: get(system.by) };
         }
     }
 

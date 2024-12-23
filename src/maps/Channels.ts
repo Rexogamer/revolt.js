@@ -15,10 +15,7 @@ import { action, computed, makeAutoObservable, runInAction } from "mobx";
 import isEqual from "lodash.isequal";
 import { decodeTime, ulid } from "ulid";
 
-import {
-    Nullable /* eslint-disable mobx/missing-make-observable */,
-    toNullable,
-} from "../util/null";
+import { Nullable, toNullable } from "../util/null";
 import Collection from "./Collection";
 import { Message } from "./Messages";
 import { Client, FileArgs } from "..";
