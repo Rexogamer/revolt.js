@@ -2,12 +2,12 @@ import type {
     DataEditMessage,
     DataMessageSend,
     Embed,
+    File,
     Interactions,
     Masquerade,
     Message as MessageI,
     SystemMessage,
 } from "revolt-api";
-import type { File } from "revolt-api";
 
 import {
     makeAutoObservable,

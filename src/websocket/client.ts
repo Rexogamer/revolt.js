@@ -2,7 +2,7 @@ import { backOff } from "@insertish/exponential-backoff";
 import { ObservableSet, runInAction } from "mobx";
 import WebSocket from "@insertish/isomorphic-ws";
 import type { MessageEvent } from "ws";
-import { Role } from "revolt-api";
+import type { Role } from "revolt-api";
 
 import { Client } from "..";
 import {
@@ -734,10 +734,11 @@ export class WebSocketClient {
                         }
 
                         default:
-                            this.client.debug &&
+                            if (this.client.debug) {
                                 console.warn(
                                     `Warning: Unhandled packet! ${packet.type}`,
                                 );
+                            }
                     }
                 } catch (e) {
                     console.error(e);
@@ -768,7 +769,7 @@ export class WebSocketClient {
                 }
             };
 
-            ws.onerror = (err: any) => {
+            ws.onerror = (err: unknown) => {
                 reject(err);
             };
 

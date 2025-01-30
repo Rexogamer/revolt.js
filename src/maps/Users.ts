@@ -1,12 +1,12 @@
 import type {
     BotInformation,
-    UserStatus,
-    User as UserI,
-    RelationshipStatus,
-    FieldsUser,
     DataEditUser,
+    FieldsUser,
+    File,
+    RelationshipStatus,
+    User as UserI,
+    UserStatus,
 } from "revolt-api";
-import type { File } from "revolt-api";
 
 import { makeAutoObservable, action, runInAction, computed } from "mobx";
 import isEqual from "lodash.isequal";
@@ -92,7 +92,6 @@ export class User {
                         this.status.text = undefined;
                     }
                 }
-                // @ts-ignore
                 case "DisplayName":
                     this.display_name = null;
                     break;

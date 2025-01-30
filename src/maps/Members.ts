@@ -1,11 +1,11 @@
 import type {
     DataMemberEdit,
     FieldsMember,
+    File,
     Member as MemberI,
     MemberCompositeKey,
     Role,
 } from "revolt-api";
-import type { File } from "revolt-api";
 
 import { makeAutoObservable, runInAction, action, computed } from "mobx";
 import isEqual from "lodash.isequal";
@@ -194,8 +194,8 @@ export class Member {
             const [id, role] = roles[roles.length - 1];
             return {
                 id,
-                ...role
-            }
+                ...role,
+            };
         } else {
             return null;
         }
@@ -234,14 +234,19 @@ export class Member {
      * Get a pre-configured avatar URL of a member
      */
     get avatarURL() {
-        return this.generateAvatarURL({ max_side: 256 }) ?? this.user?.avatarURL;
+        return (
+            this.generateAvatarURL({ max_side: 256 }) ?? this.user?.avatarURL
+        );
     }
 
     /**
      * Get a pre-configured animated avatar URL of a member
      */
     get animatedAvatarURL() {
-        return this.generateAvatarURL({ max_side: 256 }, true) ?? this.user?.animatedAvatarURL;
+        return (
+            this.generateAvatarURL({ max_side: 256 }, true) ??
+            this.user?.animatedAvatarURL
+        );
     }
 
     /**

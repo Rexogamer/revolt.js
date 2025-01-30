@@ -1,13 +1,18 @@
 import type {
+    Channel,
     Emoji,
     FieldsChannel,
     FieldsMember,
     FieldsServer,
     FieldsUser,
+    Member,
+    MemberCompositeKey,
+    Message,
+    RelationshipStatus,
+    Role,
+    Server,
+    User,
 } from "revolt-api";
-import type { Channel, Message } from "revolt-api";
-import type { Member, MemberCompositeKey, Role, Server } from "revolt-api";
-import type { RelationshipStatus, User } from "revolt-api";
 import type { Session } from "../Client";
 
 type WebSocketError = {

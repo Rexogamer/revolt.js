@@ -7,9 +7,12 @@ import type {
     DataOnboard,
     Feature,
     InviteResponse,
+    MemberCompositeKey,
+    Metadata,
+    RevoltConfig,
+    Role,
 } from "revolt-api";
-import type { RevoltConfig, Metadata } from "revolt-api";
-import { API, MemberCompositeKey, Role } from "revolt-api";
+import { API } from "revolt-api";
 
 import Bots from "./maps/Bots";
 import Channels, { Channel } from "./maps/Channels";
@@ -437,7 +440,9 @@ export class Client extends EventEmitter {
     async logout(avoidRequest?: boolean) {
         this.user = null;
         this.emit("logout");
-        !avoidRequest && (await this.api.post("/auth/session/logout"));
+        if (!avoidRequest) {
+            await this.api.post("/auth/session/logout");
+        }
         this.reset();
     }
 

@@ -2,7 +2,7 @@ import { runInAction } from "mobx";
 
 import { Client } from "../Client";
 
-import {
+import type {
     InviteBotDestination,
     DataEditBot,
     DataCreateBot,

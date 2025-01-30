@@ -1,3 +1,4 @@
+/* eslint-disable mobx/missing-make-observable */
 import type {
     Category,
     Channel as ChannelI,
@@ -7,12 +8,13 @@ import type {
     DataEditRole,
     DataEditServer,
     FieldsServer,
+    File,
+    Override,
     Member,
     Role,
     Server as ServerI,
     SystemMessageChannels,
 } from "revolt-api";
-import type { File } from "revolt-api";
 
 import { makeAutoObservable, action, runInAction, computed } from "mobx";
 import isEqual from "lodash.isequal";
@@ -24,7 +26,6 @@ import { User } from "./Users";
 import { Channel, Client, FileArgs } from "..";
 import { decodeTime } from "ulid";
 import { INotificationChecker } from "../util/Unreads";
-import { Override } from "revolt-api";
 import { bitwiseAndEq, calculatePermission } from "../permissions/calculator";
 
 export class Server {

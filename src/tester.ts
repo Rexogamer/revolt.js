@@ -17,21 +17,21 @@ async function user() {
         console.info(`Logged in as ${client.user!.username}!`);
 
         const group = await client.channels.createGroup({
-            name: 'sussy',
-            users: []
+            name: "sussy",
+            users: [],
         });
 
         const msg = await group.sendMessage({
             content: "embed test",
             embeds: [
                 {
-                    title: 'We do a little!'
-                }
-            ]
+                    title: "We do a little!",
+                },
+            ],
         });
 
         await msg.edit({
-            embeds: [{ title: 'sus' }]
+            embeds: [{ title: "sus" }],
         });
     });
 
@@ -49,22 +49,20 @@ async function user() {
             );
         } else if (message.content === "join bot") {
             await client.api.post(
-                `/bots/${'01FCV7DCMRD9MT3JBYT5VEKVRD'}/invite`,
+                `/bots/${"01FCV7DCMRD9MT3JBYT5VEKVRD"}/invite`,
                 { group: message.channel_id },
             );
             // { server: '01FATEGMHEE2M1QGPA65NS6V8K' });
         } else if (message.content === "edit bot name") {
-            await client.api.patch(
-                `/bots/${'01FCV7DCMRD9MT3JBYT5VEKVRD'}`,
-                { name: "testingbkaka" },
-            );
+            await client.api.patch(`/bots/${"01FCV7DCMRD9MT3JBYT5VEKVRD"}`, {
+                name: "testingbkaka",
+            });
         } else if (message.content === "make bot public") {
-            await client.api.patch(
-                `/bots/${'01FCV7DCMRD9MT3JBYT5VEKVRD'}`,
-                { public: true },
-            );
+            await client.api.patch(`/bots/${"01FCV7DCMRD9MT3JBYT5VEKVRD"}`, {
+                public: true,
+            });
         } else if (message.content === "delete bot") {
-            await client.api.delete(`/bots/${'01FCV7DCMRD9MT3JBYT5VEKVRD'}`);
+            await client.api.delete(`/bots/${"01FCV7DCMRD9MT3JBYT5VEKVRD"}`);
         }
     });
 
@@ -80,7 +78,7 @@ async function user() {
         password: process.env.PASSWORD as string,
     });
 
-    onboarding?.('sus', true);
+    onboarding?.("sus", true);
 }
 
 /*function bot() {

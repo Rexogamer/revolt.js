@@ -5,11 +5,13 @@ import type {
     DataMessageSearch,
     DataMessageSend,
     FieldsChannel,
+    File,
+    Override,
+    OverrideField,
+    Member,
     Message as MessageI,
+    User,
 } from "revolt-api";
-import type { File } from "revolt-api";
-import type { Member } from "revolt-api";
-import type { User } from "revolt-api";
 
 import { action, computed, makeAutoObservable, runInAction } from "mobx";
 import isEqual from "lodash.isequal";
@@ -21,7 +23,6 @@ import { Message } from "./Messages";
 import { Client, FileArgs } from "..";
 import { Permission } from "../permissions/definitions";
 import { INotificationChecker } from "../util/Unreads";
-import { Override, OverrideField } from "revolt-api";
 import type { APIRoutes } from "revolt-api/dist/routes";
 import { bitwiseAndEq, calculatePermission } from "../permissions/calculator";
 

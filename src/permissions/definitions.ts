@@ -135,4 +135,7 @@ export const DEFAULT_PERMISSION_DIRECT_MESSAGE =
  * Permissions in server text / voice channel
  */
 export const DEFAULT_PERMISSION_SERVER =
-    DEFAULT_PERMISSION + Permission.React + Permission.ChangeNickname + Permission.ChangeAvatar;
+    DEFAULT_PERMISSION +
+    Permission.React +
+    Permission.ChangeNickname +
+    Permission.ChangeAvatar;
