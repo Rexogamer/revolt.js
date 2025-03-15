@@ -146,7 +146,6 @@ __metadata:
     eslint-plugin-mobx: "npm:^0.0.13"
     eventemitter3: "npm:^5.0.1"
     in-publish: "npm:^2.0.1"
-    jsdoc-babel: "npm:^0.5.0"
     lodash.defaultsdeep: "npm:^4.6.1"
     lodash.isequal: "npm:^4.5.0"
     mobx: "npm:^6.13.5"
@@ -1001,25 +1000,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsdoc-babel@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "jsdoc-babel@npm:0.5.0"
-  dependencies:
-    jsdoc-regex: "npm:^1.0.1"
-    lodash: "npm:^4.17.10"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10c0/877dfee24aecd5cbbd047097ac831d78bee9dc0f26d18411999977c366c362601d611b318eb7bc5e438de3bc038caa2c3ad7f5f9c1935d2db3cc613dbe0da61b
-  languageName: node
-  linkType: hard
-
-"jsdoc-regex@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "jsdoc-regex@npm:1.0.1"
-  checksum: 10c0/adb36373e6b55409be6e001ce08cc3c00261e9685cddbb67f1cf19233b810f0bfc0f3aac8248817fd292cf679a8d2c9328b8c1f51466700811ebedf1501d0fba
-  languageName: node
-  linkType: hard
-
 "json-schema-traverse@npm:^0.4.1":
   version: 0.4.1
   resolution: "json-schema-traverse@npm:0.4.1"
@@ -1080,13 +1060,6 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: 10c0/402fa16a1edd7538de5b5903a90228aa48eb5533986ba7fa26606a49db2572bf414ff73a2c9f5d5fd36b31c46a5d5c7e1527749c07cbcf965ccff5fbdf32c506
-  languageName: node
-  linkType: hard
-
-"lodash@npm:^4.17.10":
-  version: 4.17.21
-  resolution: "lodash@npm:4.17.21"
-  checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
   languageName: node
   linkType: hard
 
