@@ -6,6 +6,7 @@ import type {
     Interactions,
     Masquerade,
     Message as MessageI,
+    MessageWebhook,
     SystemMessage,
 } from "revolt-api";
 
@@ -31,7 +32,7 @@ export class Message {
     nonce?: string;
     channel_id: string;
     author_id: string;
-    webhook?: { name: string; avatar?: string };
+    webhook?: Nullable<MessageWebhook>;
 
     content: Nullable<string>;
     system: Nullable<SystemMessage>;
@@ -177,7 +178,7 @@ export class Message {
         this.nonce = data.nonce ?? undefined;
         this.channel_id = data.channel;
         this.author_id = data.author;
-        this.webhook = toNullable((data as any).webhook);
+        this.webhook = toNullable(data.webhook);
 
         this.content = toNullable(data.content);
         this.system = toNullable(data.system);
