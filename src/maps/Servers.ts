@@ -1,4 +1,4 @@
-/* eslint-disable mobx/missing-make-observable */
+ 
 import type {
     Category,
     Channel as ChannelI,
