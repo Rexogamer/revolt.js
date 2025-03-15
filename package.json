@@ -69,7 +69,8 @@
                 {
                     "varsIgnorePattern": "^_"
                 }
-            ]
+            ],
+            "mobx/missing-make-observable": "off"
         }
     },
     "scripts": {
