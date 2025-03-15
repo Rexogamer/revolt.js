@@ -3,7 +3,6 @@
     "version": "6.6.1",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
-    "module": "esm/index.js",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/rexogamer/revolt.js.git"
@@ -72,7 +71,7 @@
         "cleanup": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
         "dev": "tsc-watch --onSuccess \"node --experimental-specifier-resolution=node dist/tester\"",
         "prepublish": "in-publish && tsc || echo Skipping build.",
-        "build": "yarn cleanup && tsc && tsc -p tsconfig.cjs.json",
+        "build": "yarn cleanup && tsc",
         "build:watch": "tsc-watch",
         "typecheck": "tsc --noEmit",
         "docs": "typedoc --readme README.md src/",
@@ -81,8 +80,7 @@
     },
     "files": [
         "README.md",
-        "dist",
-        "esm"
+        "dist"
     ],
     "description": "Library for interacting with the Revolt API. Fork of v6.",
     "packageManager": "yarn@4.5.3"
