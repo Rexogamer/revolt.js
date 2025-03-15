@@ -1,7 +1,5 @@
 import { backOff } from "@insertish/exponential-backoff";
 import { ObservableSet, runInAction } from "mobx";
-import WebSocket from "@insertish/isomorphic-ws";
-import type { MessageEvent } from "ws";
 import type { Role } from "revolt-api";
 
 import { Client } from "..";
@@ -746,7 +744,7 @@ export class WebSocketClient {
             };
 
             const timeouts: Record<string, number> = {};
-            const handle = async (msg: WebSocket.MessageEvent) => {
+            const handle = async (msg: MessageEvent) => {
                 const data = msg.data;
                 if (typeof data !== "string") return;
 
@@ -756,7 +754,7 @@ export class WebSocketClient {
             };
 
             let processing = false;
-            const queue: WebSocket.MessageEvent[] = [];
+            const queue: MessageEvent[] = [];
             ws.onmessage = async (data: MessageEvent) => {
                 queue.push(data);
 
