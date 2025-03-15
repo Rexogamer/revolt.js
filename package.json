@@ -30,7 +30,7 @@
         "eslint": "^9.22.0",
         "eslint-plugin-mobx": "^0.0.13",
         "in-publish": "^2.0.1",
-        "prettier": "^2.8.8",
+        "prettier": "^3.5.3",
         "tsc-watch": "^6.3.0",
         "typedoc": "^0.27.9",
         "typescript": "^5.8.2"

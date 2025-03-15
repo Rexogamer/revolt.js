@@ -112,22 +112,22 @@ export class Message {
      * Get the avatar URL for this message.
      */
     get avatarURL() {
-        return this.generateMasqAvatarURL() ?? this.webhook?.avatar
+        return (this.generateMasqAvatarURL() ?? this.webhook?.avatar)
             ? `https://autumn.revolt.chat/avatars/${this.webhook?.avatar}`
             : this.member
-            ? this.member?.avatarURL
-            : this.author?.avatarURL;
+              ? this.member?.avatarURL
+              : this.author?.avatarURL;
     }
 
     /**
      * Get the animated avatar URL for this message.
      */
     get animatedAvatarURL() {
-        return this.generateMasqAvatarURL() ?? this.webhook?.avatar
+        return (this.generateMasqAvatarURL() ?? this.webhook?.avatar)
             ? `https://autumn.revolt.chat/avatars/${this.webhook?.avatar}`
             : this.member
-            ? this.member?.animatedAvatarURL
-            : this.author?.animatedAvatarURL;
+              ? this.member?.animatedAvatarURL
+              : this.author?.animatedAvatarURL;
     }
 
     @computed generateMasqAvatarURL() {
