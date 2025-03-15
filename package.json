@@ -31,7 +31,6 @@
         "in-publish": "^2.0.1",
         "jsdoc-babel": "^0.5.0",
         "prettier": "^2.8.8",
-        "rimraf": "^5.0.10",
         "tsc-watch": "^6.3.0",
         "typedoc": "^0.27.5",
         "typescript": "^5.7.2"
@@ -70,9 +69,10 @@
         }
     },
     "scripts": {
+        "cleanup": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
         "dev": "tsc-watch --onSuccess \"node --experimental-specifier-resolution=node dist/tester\"",
         "prepublish": "in-publish && tsc || echo Skipping build.",
-        "build": "rimraf dist esm && tsc && tsc -p tsconfig.cjs.json",
+        "build": "yarn cleanup && tsc && tsc -p tsconfig.cjs.json",
         "build:watch": "tsc-watch",
         "typecheck": "tsc --noEmit",
         "docs": "typedoc --readme README.md src/",
