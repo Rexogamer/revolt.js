@@ -23,7 +23,7 @@ import { Message } from "./Messages";
 import { Client, FileArgs } from "..";
 import { Permission } from "../permissions/definitions";
 import { INotificationChecker } from "../util/Unreads";
-import type { APIRoutes } from "revolt-api/dist/routes";
+import type { APIRoutes } from "revolt-api/src/routes";
 import { bitwiseAndEq, calculatePermission } from "../permissions/calculator";
 
 export class Channel {
