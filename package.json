@@ -14,26 +14,26 @@
         "eventemitter3": "^5.0.1",
         "lodash.defaultsdeep": "^4.6.1",
         "lodash.isequal": "^4.5.0",
-        "mobx": "^6.13.6",
-        "revolt-api": "0.8.3",
-        "ulid": "^2.3.0"
+        "mobx": "^6.13.7",
+        "revolt-api": "0.8.4",
+        "ulid": "^2.4.0"
     },
     "devDependencies": {
-        "@eslint/eslintrc": "^3.3.0",
-        "@eslint/js": "^9.22.0",
+        "@eslint/eslintrc": "^3.3.1",
+        "@eslint/js": "^9.24.0",
         "@types/lodash.defaultsdeep": "^4.6.9",
         "@types/lodash.isequal": "^4.5.8",
-        "@types/node": "^22.13.10",
-        "@typescript-eslint/eslint-plugin": "^8.26.1",
-        "@typescript-eslint/parser": "^8.26.1",
+        "@types/node": "^22.14.0",
+        "@typescript-eslint/eslint-plugin": "^8.29.1",
+        "@typescript-eslint/parser": "^8.29.1",
         "dotenv": "^16.4.7",
-        "eslint": "^9.22.0",
+        "eslint": "^9.24.0",
         "eslint-plugin-mobx": "^0.0.13",
         "in-publish": "^2.0.1",
         "prettier": "^3.5.3",
         "tsc-watch": "^6.3.0",
-        "typedoc": "^0.27.9",
-        "typescript": "^5.8.2"
+        "typedoc": "^0.28.2",
+        "typescript": "^5.8.3"
     },
     "eslintConfig": {
         "parser": "@typescript-eslint/parser",
