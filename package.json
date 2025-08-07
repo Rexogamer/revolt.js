@@ -1,6 +1,6 @@
 {
     "name": "@rexovolt/revolt.js",
-    "version": "6.7.1",
+    "version": "6.8.0",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "repository": {
