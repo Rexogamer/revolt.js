@@ -12,7 +12,7 @@ import type {
     Role,
     Server,
     User,
-} from "revolt-api";
+} from "stoat-api";
 import type { Session } from "../Client";
 
 type WebSocketError = {

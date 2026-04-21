@@ -11,7 +11,8 @@ import type {
     Member,
     Message as MessageI,
     User,
-} from "revolt-api";
+    VoiceInformation,
+} from "stoat-api";
 
 import { action, computed, makeAutoObservable, runInAction } from "mobx";
 import isEqual from "lodash.isequal";
@@ -23,7 +24,7 @@ import { Message } from "./Messages";
 import { Client, FileArgs } from "..";
 import { Permission } from "../permissions/definitions";
 import { INotificationChecker } from "../util/Unreads";
-import type { APIRoutes } from "revolt-api/src/routes";
+import type { APIRoutes } from "stoat-api/src/routes";
 import { bitwiseAndEq, calculatePermission } from "../permissions/calculator";
 
 export class Channel {
@@ -46,7 +47,7 @@ export class Channel {
 
     /**
      * The ID of the server this channel is in.
-     * @requires `TextChannel`, `VoiceChannel`
+     * @requires `TextChannel`
      */
     server_id: Nullable<string> = null;
 
@@ -58,31 +59,31 @@ export class Channel {
 
     /**
      * Default server channel permissions.
-     * @requires `TextChannel`, `VoiceChannel`
+     * @requires `TextChannel`
      */
     default_permissions: Nullable<OverrideField> = null;
 
     /**
      * Channel permissions for each role.
-     * @requires `TextChannel`, `VoiceChannel`
+     * @requires `TextChannel`
      */
     role_permissions: Nullable<{ [key: string]: OverrideField }> = null;
 
     /**
      * Channel name.
-     * @requires `Group`, `TextChannel`, `VoiceChannel`
+     * @requires `Group`, `TextChannel`
      */
     name: Nullable<string> = null;
 
     /**
      * Channel icon.
-     * @requires `Group`, `TextChannel`, `VoiceChannel`
+     * @requires `Group`, `TextChannel`
      */
     icon: Nullable<File> = null;
 
     /**
      * Channel description.
-     * @requires `Group`, `TextChannel`, `VoiceChannel`
+     * @requires `Group`, `TextChannel`
      */
     description: Nullable<string> = null;
 
@@ -94,7 +95,7 @@ export class Channel {
 
     /**
      * Id of last message in channel.
-     * @requires `Group`, `DM`, `TextChannel`, `VoiceChannel`
+     * @requires `Group`, `DM`, `TextChannel`
      */
     last_message_id: Nullable<string> = null;
 
@@ -105,9 +106,21 @@ export class Channel {
 
     /**
      * Channel is not safe for work.
-     * @requires `Group`, `TextChannel`, `VoiceChannel`
+     * @requires `Group`, `TextChannel`
      */
     nsfw: Nullable<boolean> = null;
+
+    /**
+     * Voice information if this channel is also a voice channel.
+     * @requires `TextChannel`
+     */
+    voice: Nullable<VoiceInformation> = null;
+
+    /**
+     * The channel's slowmode delay in seconds.
+     * @requires `TextChannel`
+     */
+    slowmode: Nullable<number> = null;
 
     /**
      * The group owner.
@@ -142,7 +155,7 @@ export class Channel {
 
     /**
      * Last message sent in this channel.
-     * @requires `Group`, `DM`, `TextChannel`, `VoiceChannel`
+     * @requires `Group`, `DM`, `TextChannel`
      */
     get last_message() {
         const id = this.last_message_id;
@@ -234,11 +247,7 @@ export class Channel {
      * Get whether this channel is unread.
      */
     get unread() {
-        if (
-            !this.last_message_id ||
-            this.channel_type === "SavedMessages" ||
-            this.channel_type === "VoiceChannel"
-        )
+        if (!this.last_message_id || this.channel_type === "SavedMessages")
             return false;
 
         return (
@@ -252,11 +261,7 @@ export class Channel {
      * Get mentions in this channel for user.
      */
     get mentions() {
-        if (
-            this.channel_type === "SavedMessages" ||
-            this.channel_type === "VoiceChannel"
-        )
-            return [];
+        if (this.channel_type === "SavedMessages") return [];
         return this.client.unreads?.getUnread(this._id)?.mentions ?? [];
     }
 
@@ -284,19 +289,17 @@ export class Channel {
                 this.nsfw = toNullable(data.nsfw);
                 break;
             }
-            case "TextChannel":
-            case "VoiceChannel": {
+            case "TextChannel": {
                 this.server_id = toNullable(data.server);
                 this.name = toNullable(data.name);
                 this.description = toNullable(data.description);
                 this.icon = toNullable(data.icon);
                 this.default_permissions = toNullable(data.default_permissions);
                 this.role_permissions = toNullable(data.role_permissions);
-
-                if (data.channel_type === "TextChannel") {
-                    this.last_message_id = toNullable(data.last_message_id);
-                    this.nsfw = toNullable(data.nsfw);
-                }
+                this.last_message_id = toNullable(data.last_message_id);
+                this.nsfw = toNullable(data.nsfw);
+                this.voice = toNullable(data.voice);
+                this.slowmode = toNullable(data.slowmode);
 
                 break;
             }
@@ -343,6 +346,8 @@ export class Channel {
         apply("recipients", "recipient_ids");
         apply("last_message_id");
         apply("nsfw");
+        apply("voice");
+        apply("slowmode");
     }
 
     @action updateGroupJoin(user: string) {
@@ -388,7 +393,7 @@ export class Channel {
 
     /**
      * Delete a channel
-     * @requires `DM`, `Group`, `TextChannel`, `VoiceChannel`
+     * @requires `DM`, `Group`, `TextChannel`
      */
     async delete(leave_silently?: boolean, avoidReq?: boolean) {
         if (!avoidReq)
@@ -402,10 +407,7 @@ export class Channel {
                 return;
             }
 
-            if (
-                this.channel_type === "TextChannel" ||
-                this.channel_type === "VoiceChannel"
-            ) {
+            if (this.channel_type === "TextChannel") {
                 const server = this.server;
                 if (server) {
                     server.channel_ids = server.channel_ids.filter(
@@ -592,16 +594,6 @@ export class Channel {
     async createInvite() {
         return await this.client.api.post(
             `/channels/${this._id as ""}/invites`,
-        );
-    }
-
-    /**
-     * Join a call in a channel
-     * @returns Join call response data
-     */
-    async joinCall() {
-        return await this.client.api.post(
-            `/channels/${this._id as ""}/join_call`,
         );
     }
 

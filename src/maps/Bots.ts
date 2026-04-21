@@ -7,7 +7,7 @@ import type {
     DataEditBot,
     DataCreateBot,
     OwnedBotsResponse,
-} from "revolt-api";
+} from "stoat-api";
 
 export default class Bots {
     client: Client;

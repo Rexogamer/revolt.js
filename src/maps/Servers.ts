@@ -13,7 +13,7 @@ import type {
     Role,
     Server as ServerI,
     SystemMessageChannels,
-} from "revolt-api";
+} from "stoat-api";
 
 import { makeAutoObservable, action, runInAction, computed } from "mobx";
 import isEqual from "lodash.isequal";
@@ -377,6 +377,19 @@ export class Server {
     async deleteRole(role_id: string) {
         return await this.client.api.delete(
             `/servers/${this._id as ""}/roles/${role_id as ""}`,
+        );
+    }
+
+    /**
+     * Transfer ownership to another member
+     * @param new_owner The ID of the user to transfer ownership to
+     * @param mfa_ticket A valid MFA ticket from /auth/mfa/ticket
+     */
+    async transferOwnership(new_owner: string, mfa_ticket: string) {
+        return await this.client.api.patch(
+            `/servers/${this._id as ""}`,
+            { owner: new_owner },
+            { headers: { "X-MFA-Ticket": mfa_ticket } },
         );
     }
 

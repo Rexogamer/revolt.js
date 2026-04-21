@@ -5,7 +5,7 @@ import type {
     Member as MemberI,
     MemberCompositeKey,
     Role,
-} from "revolt-api";
+} from "stoat-api";
 
 import { makeAutoObservable, runInAction, action, computed } from "mobx";
 import isEqual from "lodash.isequal";

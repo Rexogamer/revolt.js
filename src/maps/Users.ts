@@ -6,7 +6,7 @@ import type {
     RelationshipStatus,
     User as UserI,
     UserStatus,
-} from "revolt-api";
+} from "stoat-api";
 
 import { makeAutoObservable, action, runInAction, computed } from "mobx";
 import isEqual from "lodash.isequal";

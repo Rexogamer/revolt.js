@@ -1,4 +1,4 @@
-import type { Emoji as EmojiI, EmojiParent } from "revolt-api";
+import type { Emoji as EmojiI, EmojiParent } from "stoat-api";
 
 import { makeAutoObservable, runInAction } from "mobx";
 

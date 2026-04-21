@@ -2,7 +2,7 @@
 
 ![@rexovolt/revolt.js](https://img.shields.io/npm/v/@rexovolt/revolt.js) <!-- ![revolt-api](https://img.shields.io/npm/v/revolt-api?label=Revolt%20API) -->
 
-**revolt.js** is a direct implementation of the entire Revolt API and provides a way to authenticate and start communicating with Revolt servers. This repository is a fork of revolt.js v6 with various API updates.
+**revolt.js** is a direct implementation of the entire Stoat/Revolt API and provides a way to authenticate and start communicating with Stoat/Revolt servers. This repository is a fork of revolt.js v6 with various API updates.
 
 ## Example Usage (Javascript / ES6)
 
@@ -86,9 +86,9 @@ client.once('ready', () => {
 });
 ```
 
-## Revolt API Types
+## Stoat API Types
 
-All `revolt-api` types are re-exported from this library under `API`.
+All `stoat-api` types are re-exported from this library under `API`.
 
 ```typescript
 import { API } from "revolt.js";

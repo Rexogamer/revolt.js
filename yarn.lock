@@ -205,6 +205,7 @@ __metadata:
     mobx: "npm:^6.13.7"
     prettier: "npm:^3.6.2"
     revolt-api: "npm:0.8.8"
+    stoat-api: "npm:^0.12.0"
     tsc-watch: "npm:^6.3.1"
     typedoc: "npm:^0.28.9"
     typescript: "npm:^5.9.2"
@@ -1024,6 +1025,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json-with-bigint@npm:^3.4.4":
+  version: 3.5.8
+  resolution: "json-with-bigint@npm:3.5.8"
+  checksum: 10c0/a0c4e37626d74a9a493539f9f9a94855933fa15ea2f028859a787229a42c5f11803db6f94f1ce7b1d89756c1e80a7c1f11006bac266ec7ce819b75701765ca0a
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.5.4":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
@@ -1362,6 +1370,15 @@ __metadata:
   dependencies:
     through: "npm:2"
   checksum: 10c0/88c09b1b4de84953bf5d6c153123a1fbb20addfea9381f70d27b4eb6b2bfbadf25d313f8f5d3fd727d5679b97bfe54da04766b91010f131635bf49e51d5db3fc
+  languageName: node
+  linkType: hard
+
+"stoat-api@npm:^0.12.0":
+  version: 0.12.0
+  resolution: "stoat-api@npm:0.12.0"
+  dependencies:
+    json-with-bigint: "npm:^3.4.4"
+  checksum: 10c0/276d4254b88f19877c4b0929c1e159d5a29abbb2ee250d1ca2c490e150e83795174c7765beec5ea656cff9829a7e7ee7c162a851e6f3ff7890a5ae4ac043b8dc
   languageName: node
   linkType: hard
 

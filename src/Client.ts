@@ -11,8 +11,8 @@ import type {
     Metadata,
     RevoltConfig,
     Role,
-} from "revolt-api";
-import { API } from "revolt-api";
+} from "stoat-api";
+import { API } from "stoat-api";
 
 import Bots from "./maps/Bots";
 import Channels, { Channel } from "./maps/Channels";

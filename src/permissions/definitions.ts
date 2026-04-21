@@ -81,6 +81,16 @@ export const Permission = {
     DeafenMembers: 2 ** 34,
     /// Move members between voice channels
     MoveMembers: 2 ** 35,
+    // Listen to other users
+    Listen: 2 ** 36,
+
+    // * Channel permissions two electric boogaloo
+    // Mention everyone and online members
+    MentionEveryone: 2 ** 37,
+    // Mention roles
+    MentionRoles: 2 ** 38,
+    // Bypass slowmode
+    BypassSlowmode: 2 ** 39,
 
     // * Misc. permissions
     // % Bits 36 to 52: free area
@@ -129,7 +139,10 @@ export const DEFAULT_PERMISSION_SAVED_MESSAGES = Permission.GrantAllSafe;
  * Permissions in direct message channels / default permissions for group DMs
  */
 export const DEFAULT_PERMISSION_DIRECT_MESSAGE =
-    DEFAULT_PERMISSION + Permission.React + Permission.ManageChannel;
+    DEFAULT_PERMISSION +
+    Permission.React +
+    Permission.Masquerade +
+    Permission.ManageChannel;
 
 /**
  * Permissions in server text / voice channel

@@ -27,4 +27,4 @@ export {
     ServerboundNotification,
 } from "./websocket/notifications";
 
-export * as API from "revolt-api";
+export * as API from "stoat-api";

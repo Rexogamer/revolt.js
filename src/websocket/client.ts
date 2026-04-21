@@ -1,6 +1,6 @@
 import { backOff } from "@insertish/exponential-backoff";
 import { ObservableSet, runInAction } from "mobx";
-import type { Role } from "revolt-api";
+import type { Role } from "stoat-api";
 
 import { Client } from "..";
 import {
@@ -404,10 +404,7 @@ export class WebSocketClient {
                             runInAction(async () => {
                                 if (packet.type !== "ChannelCreate") throw 0;
 
-                                if (
-                                    packet.channel_type === "TextChannel" ||
-                                    packet.channel_type === "VoiceChannel"
-                                ) {
+                                if (packet.channel_type === "TextChannel") {
                                     const server =
                                         await this.client.servers.fetch(
                                             packet.server,

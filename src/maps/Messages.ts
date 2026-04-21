@@ -8,7 +8,7 @@ import type {
     Message as MessageI,
     MessageWebhook,
     SystemMessage,
-} from "revolt-api";
+} from "stoat-api";
 
 import {
     makeAutoObservable,
