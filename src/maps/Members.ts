@@ -214,6 +214,18 @@ export class Member {
     }
 
     /**
+     * Get this member's current role icon.
+     */
+    @computed get roleIcon() {
+        const roles = this.orderedRoles.filter((x) => x[1].colour);
+        if (roles.length > 0) {
+            return roles[roles.length - 1][1].icon;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Get this member's ranking.
      * Smaller values are ranked as higher priotity.
      */

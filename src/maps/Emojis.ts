@@ -47,7 +47,16 @@ export class Emoji {
     }
 
     /**
-     * Delete a message
+     * Rename an emoji
+     */
+    async rename(name: string) {
+        return await this.client.api.patch(`/custom/emoji/${this._id as ""}`, {
+            name,
+        });
+    }
+
+    /**
+     * Delete an emoji
      */
     async delete() {
         return await this.client.api.delete(`/custom/emoji/${this._id as ""}`);
