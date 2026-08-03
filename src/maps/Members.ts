@@ -23,6 +23,7 @@ export class Member {
     joined_at: Date;
 
     nickname: Nullable<string> = null;
+    pronouns: Nullable<string> = null;
     avatar: Nullable<File> = null;
     roles: Nullable<string[]> = null;
     timeout: Nullable<Date> = null;
@@ -70,6 +71,7 @@ export class Member {
         this.joined_at = new Date(data.joined_at);
 
         this.nickname = toNullable(data.nickname);
+        this.pronouns = toNullable(data.pronouns);
         this.avatar = toNullable(data.avatar);
         this.roles = toNullable(data.roles);
         this.timeout = toNullableDate(data.timeout);
@@ -103,6 +105,9 @@ export class Member {
                 case "Nickname":
                     this.nickname = null;
                     break;
+                case "Pronouns":
+                    this.pronouns = null;
+                    break;
                 case "Avatar":
                     this.avatar = null;
                     break;
@@ -116,6 +121,7 @@ export class Member {
         }
 
         apply("nickname");
+        apply("pronouns");
         apply("avatar");
         apply("roles");
         apply("timeout");

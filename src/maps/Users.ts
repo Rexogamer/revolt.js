@@ -25,6 +25,7 @@ export class User {
     discriminator: string;
     display_name?: Nullable<string>;
 
+    pronouns: Nullable<string>;
     avatar: Nullable<File>;
     badges: Nullable<number>;
     status: Nullable<UserStatus>;
@@ -49,6 +50,7 @@ export class User {
         this.discriminator = data.discriminator;
         this.display_name = data.display_name;
 
+        this.pronouns = toNullable(data.pronouns);
         this.avatar = toNullable(data.avatar);
         this.badges = toNullable(data.badges);
         this.status = toNullable(data.status);
@@ -101,6 +103,7 @@ export class User {
         apply("username");
         apply("discriminator");
         apply("display_name");
+        apply("pronouns");
         apply("avatar");
         apply("badges");
         apply("status");

@@ -198,14 +198,14 @@ __metadata:
     dotenv: "npm:^16.4.7"
     eslint: "npm:^9.32.0"
     eslint-plugin-mobx: "npm:^0.0.13"
-    eventemitter3: "npm:^5.0.1"
+    eventemitter3: "npm:^5.0.4"
     in-publish: "npm:^2.0.1"
     lodash.defaultsdeep: "npm:^4.6.1"
     lodash.isequal: "npm:^4.5.0"
     mobx: "npm:^6.13.7"
     prettier: "npm:^3.6.2"
     revolt-api: "npm:0.8.8"
-    stoat-api: "npm:^0.13.7"
+    stoat-api: "npm:^0.14.3"
     tsc-watch: "npm:^6.3.1"
     typedoc: "npm:^0.28.9"
     typescript: "npm:^5.9.2"
@@ -779,10 +779,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "eventemitter3@npm:5.0.1"
-  checksum: 10c0/4ba5c00c506e6c786b4d6262cfbce90ddc14c10d4667e5c83ae993c9de88aa856033994dd2b35b83e8dc1170e224e66a319fa80adc4c32adcd2379bbc75da814
+"eventemitter3@npm:^5.0.4":
+  version: 5.0.4
+  resolution: "eventemitter3@npm:5.0.4"
+  checksum: 10c0/575b8cac8d709e1473da46f8f15ef311b57ff7609445a7c71af5cd42598583eee6f098fa7a593e30f27e94b8865642baa0689e8fa97c016f742abdb3b1bf6d9a
   languageName: node
   linkType: hard
 
@@ -1373,12 +1373,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stoat-api@npm:^0.13.7":
-  version: 0.13.7
-  resolution: "stoat-api@npm:0.13.7"
+"stoat-api@npm:^0.14.3":
+  version: 0.14.3
+  resolution: "stoat-api@npm:0.14.3"
   dependencies:
     json-with-bigint: "npm:^3.4.4"
-  checksum: 10c0/c65eaf6d0366e5d66f04eeedca3d2d67089a340261d3b25bfce83d70f784f4c382a4881026e28c0ccd5484741ac92873c03aeea86463817ecc196d5fa4ec9f0f
+  checksum: 10c0/ef4556e31be4e5a16d030edb7a03c4b4497c0eae322896a30cdf6d8b8314f01550e47ecf6f825c4bfd533373e04fe328f7c8d54b4b16892ed6fdb3cc395c7de9
   languageName: node
   linkType: hard
 
